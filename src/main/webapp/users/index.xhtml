@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:hx="http://java.sun.com/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="body">
+		<h1>#{msg['label.users']}</h1>
+		
+		<h:form>
+			<br />
+			<button class="btn btn-default" jsf:outcome="/users/create.xhtml">
+				<span class="glyphicon glyphicon-plus" /> #{msg['label.create.user']}
+			</button>
+			<br /><br />
+			<p:dataTable id="dataTable" var="user" value="#{userBean.users}">
+
+				<p:column sortBy="firstName" headerText="#{msg['label.firstName']}">
+					<h:outputText value="#{user.firstName}" />
+				</p:column>
+				<p:column sortBy="lastName" headerText="#{msg['label.lastName']}">
+					<h:outputText value="#{user.lastName}" />
+				</p:column>
+				<p:column sortBy="accountNumber" headerText="#{msg['label.accountNumber']}">
+					<h:outputText value="#{user.accountNumber}" />
+				</p:column>
+				<p:column sortBy="accountFirstName" headerText="#{msg['label.accountFirstName']}">
+					<h:outputText value="#{user.accountFirstName}" />
+				</p:column>
+				<p:column sortBy="accountLastName" headerText="#{msg['label.accountLastName']}">
+					<h:outputText value="#{user.accountLastName}" />
+				</p:column>
+				<p:column sortBy="balance" headerText="#{msg['label.balance']}">
+					<h:outputText value="#{user.balance}" />
+				</p:column>
+				<p:column>
+					<h:link value="#{msg['label.transactions']}" outcome="/transactions/index.html" style="color:#428BCA;">
+						<f:param value="#{transaction.id}" name="transaction" />
+					</h:link>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

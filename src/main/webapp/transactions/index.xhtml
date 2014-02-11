@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:hx="http://java.sun.com/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	
+	
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="account"  value="#{transactionBean.account}" required="true" converter="accountConverter" />
+		</f:metadata>
+	</ui:define>
+	<ui:define name="body">
+		<h1>#{msg['label.transaction.of']} #{transactionBean.account.description} #{transactionBean.account.customer.firstName} #{transactionBean.account.customer.lastName}</h1>
+		
+		<h:form>
+			<br />
+			<button class="btn btn-default" jsf:outcome="/transactions/deposit.xhtml">
+				<f:param value="#{transactionBean.account.id}" name="account" />
+				<span class="glyphicon glyphicon-plus" /> #{msg['label.transaction.deposit']}
+			</button> &#160;
+			<button class="btn btn-default" jsf:outcome="/transactions/transfer.xhtml">
+				<f:param value="#{transactionBean.account.id}" name="account" />
+				<span class="glyphicon glyphicon-log-out" /> #{msg['label.transaction.transfer']}
+			</button>
+			<br /><br />
+			<p:dataTable id="dataTable" var="transaction" value="#{transactionBean.account.transactions}">
+				<p:columnGroup type="header">
+					<p:row>
+						<p:column colspan="4" headerText="#{msg['label.account.balance']}:" style="text-align:right;" />
+						<p:column headerText="#{transactionBean.account.balance}" style="text-align:right;" />
+					</p:row>
+					<p:row>
+						<p:column sortBy="id" headerText="#{msg['label.transaction.number']}" />
+						<p:column sortBy="recipient.customer.firstName" headerText="#{msg['label.transaction.recipient.sender']}" />
+						<p:column sortBy="purpose" headerText="#{msg['label.transaction.purpose']}" />
+						<p:column sortBy="date" headerText="#{msg['label.transaction.date']}" />
+						<p:column sortBy="amount" headerText="#{msg['label.transaction.amount']}" />
+					</p:row>
+				</p:columnGroup>
+				<p:column >
+					<h:outputText value="#{transaction.id}" />
+				</p:column>
+				<p:column >
+					<h:outputText value="#{transaction.recipient.customer.firstName} #{transaction.recipient.customer.lastName}" />
+				</p:column>
+				<p:column >
+					<h:outputText value="#{transaction.purpose}" />
+				</p:column>
+				<p:column >
+					<h:outputText value="#{transaction.date}"  >
+						<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
+					</h:outputText>
+				</p:column>
+				<p:column style="text-align:right;">
+					<h:outputText value="#{transaction.amount}" />
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
