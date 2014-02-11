@@ -1,6 +1,5 @@
 package com.cgi.soa.masterclass.samplepay.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -15,13 +14,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+
 import com.cgi.soa.masterclass.samplepay.validator.annotation.AccountAvailable;
+import com.cgi.soa.masterclass.samplepay.validator.annotation.AccountOwner;
 
 @Entity
 @Table(name="USERS")
-public class User implements Serializable {
-
-	private static final long serialVersionUID = 126754866666765979L;
+@AccountOwner(accountFirstName="accountFirstName", accountLastName="accountLastName", accountNumber="accountNumber")
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,6 +35,11 @@ public class User implements Serializable {
 	@Basic
 	@NotNull
 	private String lastName;
+	
+	@Basic
+	@NotNull
+	@Email
+	private String email;
 
 	@Basic
 	@NotNull
@@ -77,6 +83,14 @@ public class User implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Integer getAccountNumber() {

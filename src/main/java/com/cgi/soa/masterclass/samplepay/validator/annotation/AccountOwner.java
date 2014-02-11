@@ -9,17 +9,23 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-import com.cgi.soa.masterclass.samplepay.validator.AccountAvailableValidator;
+import com.cgi.soa.masterclass.samplepay.validator.AccountOwnerValidator;
 
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+@Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = AccountAvailableValidator.class)
+@Constraint(validatedBy = AccountOwnerValidator.class)
 @Documented
-public @interface AccountAvailable {
+public @interface AccountOwner {
 
-	String message() default "{error.validator.account.number}";
+	String message() default "{error.validator.account.owner}";
 
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
+	
+	String accountNumber();
+	
+	String accountFirstName();
+	
+	String accountLastName();
 }

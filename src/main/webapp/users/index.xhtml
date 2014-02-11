@@ -26,6 +26,9 @@
 				<p:column sortBy="lastName" headerText="#{msg['label.lastName']}">
 					<h:outputText value="#{user.lastName}" />
 				</p:column>
+				<p:column sortBy="email" headerText="#{msg['label.email']}">
+					<h:outputText value="#{user.email}" />
+				</p:column>
 				<p:column sortBy="accountNumber" headerText="#{msg['label.accountNumber']}">
 					<h:outputText value="#{user.accountNumber}" />
 				</p:column>
@@ -40,7 +43,7 @@
 				</p:column>
 				<p:column>
 					<h:link value="#{msg['label.transactions']}" outcome="/transactions/index.html" style="color:#428BCA;">
-						<f:param value="#{transaction.id}" name="transaction" />
+						<f:param value="#{user.id}" name="user" />
 					</h:link>
 				</p:column>
 			</p:dataTable>

@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _IsAccountOwnerResponse_QNAME = new QName("http://ws.samplebank.masterclass.soa.cgi.com/", "isAccountOwnerResponse");
+    private final static QName _IsAccountOwner_QNAME = new QName("http://ws.samplebank.masterclass.soa.cgi.com/", "isAccountOwner");
     private final static QName _IsBalanceCovered_QNAME = new QName("http://ws.samplebank.masterclass.soa.cgi.com/", "isBalanceCovered");
     private final static QName _Transfer_QNAME = new QName("http://ws.samplebank.masterclass.soa.cgi.com/", "transfer");
     private final static QName _TransferResponse_QNAME = new QName("http://ws.samplebank.masterclass.soa.cgi.com/", "transferResponse");
@@ -36,6 +38,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link IsAccountOwnerResponse }
+     * 
+     */
+    public IsAccountOwnerResponse createIsAccountOwnerResponse() {
+        return new IsAccountOwnerResponse();
+    }
+
+    /**
+     * Create an instance of {@link TransferResponse }
+     * 
+     */
+    public TransferResponse createTransferResponse() {
+        return new TransferResponse();
     }
 
     /**
@@ -55,19 +73,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link IsAccountOwner }
+     * 
+     */
+    public IsAccountOwner createIsAccountOwner() {
+        return new IsAccountOwner();
+    }
+
+    /**
+     * Create an instance of {@link IsAccountExist }
+     * 
+     */
+    public IsAccountExist createIsAccountExist() {
+        return new IsAccountExist();
+    }
+
+    /**
      * Create an instance of {@link IsAccountExistResponse }
      * 
      */
     public IsAccountExistResponse createIsAccountExistResponse() {
         return new IsAccountExistResponse();
-    }
-
-    /**
-     * Create an instance of {@link TransferResponse }
-     * 
-     */
-    public TransferResponse createTransferResponse() {
-        return new TransferResponse();
     }
 
     /**
@@ -79,11 +105,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IsAccountExist }
+     * Create an instance of {@link JAXBElement }{@code <}{@link IsAccountOwnerResponse }{@code >}}
      * 
      */
-    public IsAccountExist createIsAccountExist() {
-        return new IsAccountExist();
+    @XmlElementDecl(namespace = "http://ws.samplebank.masterclass.soa.cgi.com/", name = "isAccountOwnerResponse")
+    public JAXBElement<IsAccountOwnerResponse> createIsAccountOwnerResponse(IsAccountOwnerResponse value) {
+        return new JAXBElement<IsAccountOwnerResponse>(_IsAccountOwnerResponse_QNAME, IsAccountOwnerResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IsAccountOwner }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.samplebank.masterclass.soa.cgi.com/", name = "isAccountOwner")
+    public JAXBElement<IsAccountOwner> createIsAccountOwner(IsAccountOwner value) {
+        return new JAXBElement<IsAccountOwner>(_IsAccountOwner_QNAME, IsAccountOwner.class, null, value);
     }
 
     /**

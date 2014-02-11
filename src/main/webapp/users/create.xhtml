@@ -32,6 +32,13 @@
 					placeholder="#{msg['label.placeholder.lastName']}" />
 			</div>
 			<div class="form-group">
+				<label for="form:email">#{msg['label.email']}</label> <input
+					type="email" class="form-control"
+					jsf:value="#{userBean.user.email}" jsf:id="email"
+					required="required" jsf:required="true"
+					placeholder="#{msg['label.placeholder.email']}" />
+			</div>
+			<div class="form-group">
 				<label for="form:accountNumber">#{msg['label.accountNumber']}</label>
 				<input type="text" class="form-control"
 					jsf:value="#{userBean.user.accountNumber}" jsf:id="accountNumber"

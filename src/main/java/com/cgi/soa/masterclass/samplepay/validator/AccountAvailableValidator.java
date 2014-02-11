@@ -9,7 +9,7 @@ import com.cgi.soa.masterclass.samplepay.validator.annotation.AccountAvailable;
 import com.cgi.soa.masterclass.samplepay.validator.factory.InjectingConstraintValidatorFactory;
 
 @RequestScoped
-public class AccountValidator implements ConstraintValidator<AccountAvailable, Integer> {
+public class AccountAvailableValidator implements ConstraintValidator<AccountAvailable, Integer> {
 	
 
 	BankWs bankWs;
