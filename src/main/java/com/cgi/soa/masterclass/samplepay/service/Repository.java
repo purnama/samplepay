@@ -1,5 +1,6 @@
 package com.cgi.soa.masterclass.samplepay.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -24,6 +25,7 @@ public class Repository {
 	}
 	
 	public void createUser(User user){
+		user.setBalance(BigDecimal.ZERO);
 		entityManager.persist(user);
 		entityManager.flush();
 	}

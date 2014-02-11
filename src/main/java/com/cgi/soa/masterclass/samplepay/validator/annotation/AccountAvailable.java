@@ -17,7 +17,7 @@ import com.cgi.soa.masterclass.samplepay.validator.AccountValidator;
 @Documented
 public @interface AccountAvailable {
 
-	String message() default "{error.validator.account.available}";
+	String message() default "{error.validator.account.number}";
 
 	Class<?>[] groups() default {};
 
