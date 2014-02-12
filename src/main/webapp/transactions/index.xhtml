@@ -16,38 +16,43 @@
 		</f:metadata>
 	</ui:define>
 	<ui:define name="body">
-		<h1>#{msg['label.transaction.of']} #{transactionBean.account.description} #{transactionBean.account.customer.firstName} #{transactionBean.account.customer.lastName}</h1>
+		<h1>#{msg['label.transaction.of']} #{transactionBean.user.firstName} #{transactionBean.user.lastName}</h1>
 		
 		<h:form>
 			<br />
 			<button class="btn btn-default" jsf:outcome="/transactions/deposit.xhtml">
-				<f:param value="#{transactionBean.account.id}" name="account" />
+				<f:param value="#{transactionBean.user.id}" name="user" />
 				<span class="glyphicon glyphicon-plus" /> #{msg['label.transaction.deposit']}
+			</button>&#160;
+			<button class="btn btn-default" jsf:outcome="/transactions/clearing.xhtml">
+				<f:param value="#{transactionBean.user.id}" name="account" />
+				<span class="glyphicon glyphicon-log-out" /> #{msg['label.transaction.clearing']}
 			</button> &#160;
-			<button class="btn btn-default" jsf:outcome="/transactions/transfer.xhtml">
-				<f:param value="#{transactionBean.account.id}" name="account" />
-				<span class="glyphicon glyphicon-log-out" /> #{msg['label.transaction.transfer']}
+			<button class="btn btn-default" jsf:outcome="/transactions/pay.xhtml">
+				<f:param value="#{transactionBean.user.id}" name="account" />
+				<span class="glyphicon glyphicon-euro" /> #{msg['label.transaction.pay']}
 			</button>
 			<br /><br />
-			<p:dataTable id="dataTable" var="transaction" value="#{transactionBean.account.transactions}">
+			<p:dataTable id="dataTable" var="transaction" value="#{transactionBean.user.transactions}">
 				<p:columnGroup type="header">
 					<p:row>
-						<p:column colspan="4" headerText="#{msg['label.account.balance']}:" style="text-align:right;" />
-						<p:column headerText="#{transactionBean.account.balance}" style="text-align:right;" />
+						<p:column colspan="5" headerText="#{msg['label.user.balance']}:" style="text-align:right;" />
+						<p:column headerText="#{transactionBean.user.balance}" style="text-align:right;" />
 					</p:row>
 					<p:row>
 						<p:column sortBy="id" headerText="#{msg['label.transaction.number']}" />
-						<p:column sortBy="recipient.customer.firstName" headerText="#{msg['label.transaction.recipient.sender']}" />
+						<p:column sortBy="recipient.firstName" headerText="#{msg['label.transaction.recipient.sender']}" />
 						<p:column sortBy="purpose" headerText="#{msg['label.transaction.purpose']}" />
 						<p:column sortBy="date" headerText="#{msg['label.transaction.date']}" />
 						<p:column sortBy="amount" headerText="#{msg['label.transaction.amount']}" />
+						<p:column sortBy="fee" headerText="#{msg['label.transaction.fee']}" />
 					</p:row>
 				</p:columnGroup>
 				<p:column >
 					<h:outputText value="#{transaction.id}" />
 				</p:column>
 				<p:column >
-					<h:outputText value="#{transaction.recipient.customer.firstName} #{transaction.recipient.customer.lastName}" />
+					<h:outputText value="#{transaction.recipient.firstName} #{transaction.recipient.lastName}" />
 				</p:column>
 				<p:column >
 					<h:outputText value="#{transaction.purpose}" />
@@ -56,6 +61,9 @@
 					<h:outputText value="#{transaction.date}"  >
 						<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
 					</h:outputText>
+				</p:column>
+				<p:column style="text-align:right;">
+					<h:outputText value="#{transaction.fee}" />
 				</p:column>
 				<p:column style="text-align:right;">
 					<h:outputText value="#{transaction.amount}" />

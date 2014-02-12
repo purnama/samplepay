@@ -41,11 +41,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IsAccountOwnerResponse }
+     * Create an instance of {@link IsAccountExist }
      * 
      */
-    public IsAccountOwnerResponse createIsAccountOwnerResponse() {
-        return new IsAccountOwnerResponse();
+    public IsAccountExist createIsAccountExist() {
+        return new IsAccountExist();
     }
 
     /**
@@ -57,35 +57,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Transfer }
-     * 
-     */
-    public Transfer createTransfer() {
-        return new Transfer();
-    }
-
-    /**
-     * Create an instance of {@link IsBalanceCovered }
-     * 
-     */
-    public IsBalanceCovered createIsBalanceCovered() {
-        return new IsBalanceCovered();
-    }
-
-    /**
      * Create an instance of {@link IsAccountOwner }
      * 
      */
     public IsAccountOwner createIsAccountOwner() {
         return new IsAccountOwner();
-    }
-
-    /**
-     * Create an instance of {@link IsAccountExist }
-     * 
-     */
-    public IsAccountExist createIsAccountExist() {
-        return new IsAccountExist();
     }
 
     /**
@@ -97,11 +73,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link IsBalanceCovered }
+     * 
+     */
+    public IsBalanceCovered createIsBalanceCovered() {
+        return new IsBalanceCovered();
+    }
+
+    /**
+     * Create an instance of {@link Transfer }
+     * 
+     */
+    public Transfer createTransfer() {
+        return new Transfer();
+    }
+
+    /**
      * Create an instance of {@link IsBalanceCoveredResponse }
      * 
      */
     public IsBalanceCoveredResponse createIsBalanceCoveredResponse() {
         return new IsBalanceCoveredResponse();
+    }
+
+    /**
+     * Create an instance of {@link IsAccountOwnerResponse }
+     * 
+     */
+    public IsAccountOwnerResponse createIsAccountOwnerResponse() {
+        return new IsAccountOwnerResponse();
     }
 
     /**

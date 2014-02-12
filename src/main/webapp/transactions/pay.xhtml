@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:hx="http://java.sun.com/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="account"  value="#{transactionBean.account}" required="true" converter="accountConverter" />
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="body">
+		<h1>#{msg['label.transaction.pay.for']}
+			#{transactionBean.user.firstName} #{transactionBean.user.lastName}</h1>
+		<form jsf:id="form">
+			<div class="form-group">
+				<label for="form:recipient">#{msg['label.transaction.recipient']} #{msg['label.transaction.number']}</label>
+				<input type="text" class="form-control"
+					jsf:value="#{transactionBean.transaction.recipient}" jsf:id="recipient"
+					jsf:converter="accountConverter"
+					required="required" jsf:required="true"
+					placeholder="#{msg['label.placeholder.recipient.number']}" />
+			</div>
+			<div class="form-group">
+				<label for="form:purpose">#{msg['label.transaction.purpose']}</label>
+				<input type="text" class="form-control"
+					jsf:value="#{transactionBean.transaction.purpose}" jsf:id="purpose"
+					required="required" jsf:required="true"
+					placeholder="#{msg['label.placeholder.purpose']}" />
+			</div>
+			<div class="form-group">
+				<label for="form:amount">#{msg['label.transaction.amount']}</label>
+				<input type="text" class="form-control"
+					jsf:value="#{transactionBean.transaction.amount}" jsf:id="amount"
+					required="required" jsf:required="true"
+					placeholder="#{msg['label.placeholder.amount']}" />
+			</div>
+			<button type="submit" class="btn btn-default"
+				jsf:action="#{transactionBean.pay}">#{msg['label.transaction.pay']}</button>
+		</form>
+	</ui:define>
+
+</ui:composition>

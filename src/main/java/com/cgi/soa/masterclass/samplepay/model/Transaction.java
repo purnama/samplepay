@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="TRANSACT")
@@ -27,6 +28,7 @@ public class Transaction implements Serializable {
 	private Integer id;
 	
 	@Temporal(TemporalType.DATE)
+	@NotNull
 	private Date date;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -34,12 +36,14 @@ public class Transaction implements Serializable {
 	private User user;
 	
 	@Basic
+	@NotNull
 	private BigDecimal amount;
 	
 	@Basic
 	private BigDecimal fee;
 	
 	@Basic
+	@NotNull
 	private String purpose;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
