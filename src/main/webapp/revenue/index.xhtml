@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:hx="http://java.sun.com/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+
+	<ui:define name="body">
+		<h1>#{msg['label.revenue']}</h1>
+
+		<h:form>
+			<br />
+			<p:dataTable id="dataTable" var="fee" value="#{feeBean.fees}">
+				<p:columnGroup type="header">
+					<p:row>
+						<p:column colspan="6" headerText="#{msg['label.user.balance']}:"
+							style="text-align:right;" />
+						<p:column headerText="#{feeBean.balance}"  style="text-align:right;" />
+					</p:row>
+					<p:row>
+						<p:column headerText="#{msg['label.transaction.number']}" />
+						<p:column headerText="#{msg['label.transaction.sender']}" />
+						<p:column headerText="#{msg['label.transaction.recipient']}" />
+						<p:column headerText="#{msg['label.transaction.purpose']}" />
+						<p:column headerText="#{msg['label.transaction.date']}" />
+						<p:column headerText="#{msg['label.transaction.amount']}" />
+						<p:column headerText="#{msg['label.transaction.fee']}" />
+					</p:row>
+				</p:columnGroup>
+				<p:column>
+					<h:outputText value="#{fee.id}" />
+				</p:column>
+				<p:column>
+					<h:outputText
+						value="#{fee.transaction.user.firstName} #{fee.transaction.user.lastName}" />
+				</p:column>
+				<p:column>
+					<h:outputText
+						value="#{fee.transaction.recipient.firstName} #{fee.transaction.recipient.lastName}" />
+				</p:column>
+				<p:column>
+					<h:outputText value="#{fee.transaction.purpose}" />
+				</p:column>
+				<p:column>
+					<h:outputText value="#{fee.transaction.date}">
+						<f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
+					</h:outputText>
+				</p:column>
+				<p:column style="text-align:right;">
+					<h:outputText value="#{fee.transaction.amount}">
+						<f:convertNumber minFractionDigits="2" />
+					</h:outputText>
+				</p:column>
+				<p:column style="text-align:right;">
+					<h:outputText value="#{fee.fee}">
+						<f:convertNumber minFractionDigits="2" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

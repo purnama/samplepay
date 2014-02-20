@@ -25,11 +25,11 @@
 				<span class="glyphicon glyphicon-plus" /> #{msg['label.transaction.deposit']}
 			</button>&#160;
 			<button class="btn btn-default" jsf:outcome="/transactions/clearing.xhtml">
-				<f:param value="#{transactionBean.user.id}" name="account" />
+				<f:param value="#{transactionBean.user.id}" name="user" />
 				<span class="glyphicon glyphicon-log-out" /> #{msg['label.transaction.clearing']}
 			</button> &#160;
 			<button class="btn btn-default" jsf:outcome="/transactions/pay.xhtml">
-				<f:param value="#{transactionBean.user.id}" name="account" />
+				<f:param value="#{transactionBean.user.id}" name="user" />
 				<span class="glyphicon glyphicon-euro" /> #{msg['label.transaction.pay']}
 			</button>
 			<br /><br />
@@ -40,12 +40,12 @@
 						<p:column headerText="#{transactionBean.user.balance}" style="text-align:right;" />
 					</p:row>
 					<p:row>
-						<p:column sortBy="id" headerText="#{msg['label.transaction.number']}" />
-						<p:column sortBy="recipient.firstName" headerText="#{msg['label.transaction.recipient.sender']}" />
-						<p:column sortBy="purpose" headerText="#{msg['label.transaction.purpose']}" />
-						<p:column sortBy="date" headerText="#{msg['label.transaction.date']}" />
-						<p:column sortBy="amount" headerText="#{msg['label.transaction.amount']}" />
-						<p:column sortBy="fee" headerText="#{msg['label.transaction.fee']}" />
+						<p:column headerText="#{msg['label.transaction.number']}" />
+						<p:column headerText="#{msg['label.transaction.recipient.sender']}" />
+						<p:column headerText="#{msg['label.transaction.purpose']}" />
+						<p:column headerText="#{msg['label.transaction.date']}" />
+						<p:column headerText="#{msg['label.transaction.fee']}" />
+						<p:column headerText="#{msg['label.transaction.amount']}" />
 					</p:row>
 				</p:columnGroup>
 				<p:column >
@@ -63,7 +63,7 @@
 					</h:outputText>
 				</p:column>
 				<p:column style="text-align:right;">
-					<h:outputText value="#{transaction.fee}" />
+					<h:outputText value="#{transaction.fee.fee}" />
 				</p:column>
 				<p:column style="text-align:right;">
 					<h:outputText value="#{transaction.amount}" />

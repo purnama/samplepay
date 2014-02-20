@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,12 +38,12 @@ public class Transaction implements Serializable {
 	@JoinColumn
 	private User user;
 	
-	@Basic
+	@Column(scale=2)
 	@NotNull
 	private BigDecimal amount;
 	
-	@Basic
-	private BigDecimal fee;
+	@OneToOne(mappedBy = "transaction", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Fee fee;
 	
 	@Basic
 	@NotNull
@@ -90,11 +93,11 @@ public class Transaction implements Serializable {
 		this.user = user;
 	}
 
-	public BigDecimal getFee() {
+	public Fee getFee() {
 		return fee;
 	}
 
-	public void setFee(BigDecimal fee) {
+	public void setFee(Fee fee) {
 		this.fee = fee;
 	}
 

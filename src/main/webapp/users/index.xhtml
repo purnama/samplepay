@@ -20,25 +20,25 @@
 			<br /><br />
 			<p:dataTable id="dataTable" var="user" value="#{userBean.users}">
 
-				<p:column sortBy="firstName" headerText="#{msg['label.firstName']}">
+				<p:column headerText="#{msg['label.firstName']}">
 					<h:outputText value="#{user.firstName}" />
 				</p:column>
-				<p:column sortBy="lastName" headerText="#{msg['label.lastName']}">
+				<p:column headerText="#{msg['label.lastName']}">
 					<h:outputText value="#{user.lastName}" />
 				</p:column>
-				<p:column sortBy="email" headerText="#{msg['label.email']}">
+				<p:column headerText="#{msg['label.email']}">
 					<h:outputText value="#{user.email}" />
 				</p:column>
-				<p:column sortBy="accountNumber" headerText="#{msg['label.accountNumber']}">
+				<p:column headerText="#{msg['label.accountNumber']}">
 					<h:outputText value="#{user.accountNumber}" />
 				</p:column>
-				<p:column sortBy="accountFirstName" headerText="#{msg['label.accountFirstName']}">
+				<p:column headerText="#{msg['label.accountFirstName']}">
 					<h:outputText value="#{user.accountFirstName}" />
 				</p:column>
-				<p:column sortBy="accountLastName" headerText="#{msg['label.accountLastName']}">
+				<p:column headerText="#{msg['label.accountLastName']}">
 					<h:outputText value="#{user.accountLastName}" />
 				</p:column>
-				<p:column sortBy="balance" headerText="#{msg['label.balance']}">
+				<p:column headerText="#{msg['label.balance']}">
 					<h:outputText value="#{user.balance}" />
 				</p:column>
 				<p:column>

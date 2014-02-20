@@ -23,16 +23,20 @@ public class TransactionBean {
 	
 	
 	public String pay(){
-		repository.createUser(user);
-		return "/users/index.xhtml?faces-redirect=true";
+		User user = repository.pay(transaction);
+		return "/transactions/index.xhtml?user="+user.getId()+"&faces-redirect=true";
 	}
 	
 	public String deposit(){
-		return null;
+		transaction.setRecipient(transaction.getUser());
+		User user = repository.deposit(transaction);
+		return "/transactions/index.xhtml?user="+user.getId()+"&faces-redirect=true";
 	}
 	
 	public String clearing(){
-		return null;
+		transaction.setRecipient(transaction.getUser());
+		User user = repository.clearing(transaction);
+		return "/transactions/index.xhtml?user="+user.getId()+"&faces-redirect=true";
 	}
 	
 	public List<User> getUsers(){

@@ -11,13 +11,13 @@
 
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:viewParam name="account"  value="#{transactionBean.account}" required="true" converter="accountConverter" />
+			<f:viewParam name="user"  value="#{transactionBean.transaction.user}" required="true" converter="userConverter" />
 		</f:metadata>
 	</ui:define>
 	
 	<ui:define name="body">
 		<h1>#{msg['label.transaction.deposit.for']}
-			#{transactionBean.user.firstName} #{transactionBean.user.lastName}</h1>
+			#{transactionBean.transaction.user.firstName} #{transactionBean.transaction.user.lastName}</h1>
 		<form jsf:id="form">
 			<div class="form-group">
 				<label for="form:purpose">#{msg['label.transaction.purpose']}</label>

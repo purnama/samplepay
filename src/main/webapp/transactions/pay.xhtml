@@ -11,19 +11,19 @@
 
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:viewParam name="account"  value="#{transactionBean.account}" required="true" converter="accountConverter" />
+			<f:viewParam name="user"  value="#{transactionBean.transaction.user}" required="true" converter="userConverter" />
 		</f:metadata>
 	</ui:define>
 	
 	<ui:define name="body">
 		<h1>#{msg['label.transaction.pay.for']}
-			#{transactionBean.user.firstName} #{transactionBean.user.lastName}</h1>
+			#{transactionBean.transaction.user.firstName} #{transactionBean.transaction.user.lastName}</h1>
 		<form jsf:id="form">
 			<div class="form-group">
 				<label for="form:recipient">#{msg['label.transaction.recipient']} #{msg['label.transaction.number']}</label>
-				<input type="text" class="form-control"
+				<input type="email" class="form-control"
 					jsf:value="#{transactionBean.transaction.recipient}" jsf:id="recipient"
-					jsf:converter="accountConverter"
+					jsf:converter="userEmailConverter"
 					required="required" jsf:required="true"
 					placeholder="#{msg['label.placeholder.recipient.number']}" />
 			</div>
