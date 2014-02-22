@@ -13,10 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Email;
 
 import com.cgi.soa.masterclass.samplepay.validator.annotation.AccountAvailable;
 import com.cgi.soa.masterclass.samplepay.validator.annotation.AccountOwner;
@@ -40,7 +37,6 @@ public class User {
 	
 	@Column(unique=true)
 	@NotNull
-	@Email
 	private String email;
 
 	@Basic

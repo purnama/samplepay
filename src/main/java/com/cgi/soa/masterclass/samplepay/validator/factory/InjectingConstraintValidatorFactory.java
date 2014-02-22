@@ -35,7 +35,9 @@ public class InjectingConstraintValidatorFactory  {
 	private static <T> T getBeanInstance(final Class<T> type) throws Exception {
 		BeanManager beanManager = getBeanManager();
 
-        final Set<Bean<?>> beans = beanManager.getBeans(Object.class,new AnnotationLiteral<Any>() {});
+        final Set<Bean<?>> beans = beanManager.getBeans(Object.class,new AnnotationLiteral<Any>() {
+
+			private static final long serialVersionUID = 3612602223649004820L;});
         
         for (Bean<?> iterateBean : beans) {
             if(iterateBean.getBeanClass().getName() == type.getName()){

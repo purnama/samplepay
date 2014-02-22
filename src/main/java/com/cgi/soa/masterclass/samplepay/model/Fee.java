@@ -2,7 +2,6 @@ package com.cgi.soa.masterclass.samplepay.model;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
